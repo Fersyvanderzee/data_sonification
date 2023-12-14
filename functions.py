@@ -233,20 +233,23 @@ def get_chord_notes(chord: str):
     return chord_notes_dict[chord]
 
 
-def get_progression(progression: list, note: str, mode: str):
+def get_progression(progression: str, note: str, mode: str):
     """
         Generate a chord progression based on a given musical note and mode.
 
         Parameters:
-        - progression (list): A list of Roman numeral or lowercase Roman numeral chord symbols.
+        - progression (str): A string with the progression. Example: I-V-vi-IV.
         - note (str): The root note of the scale (e.g., 'C', 'D#', 'G').
         - mode (str): The musical mode for the scale (e.g., 'major' or 'minor').
 
         Returns:
         - chords_list (list): A list of chord names corresponding to the given progression.
     """
+    progression = progression.replace('–', '-')
 
     scale = get_scale(note, mode)
+
+    progression = progression.split('-')
 
     chords_list = []
 
@@ -292,23 +295,23 @@ def get_chord_note_pitch(note: str):
     """
 
     pitches = {
-        'A': [57],
-        'A#': [58],
-        'Bb': [58],
-        'B': [59],
-        'C': [60],
-        'C#': [61],
-        'Db': [61],
-        'D': [62],
-        'D#': [63],
-        'Eb': [63],
-        'E': [64],
-        'F': [65],
-        'F#': [66],
-        'Gb': [66],
-        'G': [67],
-        'G#': [68],
-        'Ab': [68]
+        'A': 57,
+        'A#': 58,
+        'Bb': 58,
+        'B': 59,
+        'C': 60,
+        'C#': 61,
+        'Db': 61,
+        'D': 62,
+        'D#': 63,
+        'Eb': 63,
+        'E': 64,
+        'F': 65,
+        'F#': 66,
+        'Gb': 66,
+        'G': 67,
+        'G#': 68,
+        'Ab': 68
     }
 
     return pitches[note]
